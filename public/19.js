@@ -1,8 +1,8 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[19],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/admin/Coupons.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/admin/Ratings.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/admin/Coupons.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/admin/Ratings.vue?vue&type=script&lang=js& ***!
   \*******************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -99,61 +99,101 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   layout: 'admin',
   middleware: ['auth', 'admin'],
   metaInfo: {
     // title will be injected into parent titleTemplate
-    title: 'Coupons',
+    title: 'Reviews',
     titleTemplate: '%s | Khodgi'
   },
   data: function data() {
     return {
       dialog: false,
       snackbar: false,
+      text: '',
       headers: [{
-        text: '#',
-        align: 'start',
-        sortable: false,
-        value: 'id'
+        text: 'Name',
+        value: 'name'
       }, {
-        text: 'Code',
-        value: 'code'
+        text: 'Rating',
+        value: 'rating'
       }, {
-        text: 'Type',
-        value: 'type'
+        text: 'Title',
+        value: 'title'
       }, {
-        text: 'Value',
-        value: 'value'
+        text: 'Body',
+        value: 'body'
       }, {
-        text: 'Percent_off',
-        value: 'percent_off'
+        text: 'Approved',
+        value: 'approved'
       }, {
-        text: 'Status',
-        value: 'is_active'
+        text: 'Testimonial',
+        value: 'testimonial'
+      }, {
+        text: 'Date',
+        value: 'created_at'
       }, {
         text: 'Actions',
         value: 'action',
         sortable: false
       }],
-      coupons: [],
-      type: ['fixed', 'percent'],
+      reviews: [],
       editedIndex: -1,
       editedItem: {
         id: '',
-        code: '',
-        type: '',
-        value: '',
-        percent_off: '',
-        is_active: ''
+        name: '',
+        email: '',
+        rating: '',
+        title: '',
+        body: '',
+        approved: '',
+        testimonial: '',
+        created_at: ''
       },
       defaultItem: {
         id: '',
-        code: '',
-        type: '',
-        value: '',
-        percent_off: '',
-        is_active: ''
+        name: '',
+        email: '',
+        rating: '',
+        title: '',
+        body: '',
+        approved: '',
+        testimonial: '',
+        created_at: ''
       }
     };
   },
@@ -190,28 +230,27 @@ __webpack_require__.r(__webpack_exports__);
         _this.loading = false;
         return Promise.reject(error);
       });
-      axios.get('/api/admin/coupons').then(function (res) {
-        return _this.coupons = res.data.coupons;
-      })["catch"](function (err) {
-        console.log(err);
-      });
+      axios.get('/api/admin/ratings').then(function (res) {
+        return _this.reviews = res.data.data;
+      })["catch"](function (err) {});
     },
     editItem: function editItem(item) {
-      this.editedIndex = this.coupons.indexOf(item);
+      this.editedIndex = this.roles.indexOf(item);
       this.editedItem = Object.assign({}, item);
       this.dialog = true;
     },
     deleteItem: function deleteItem(item) {
       var _this2 = this;
 
-      var index = this.coupons.indexOf(item);
+      var index = this.reviews.indexOf(item);
       var decide = confirm('Are you sure you want to delete this item?');
 
       if (decide) {
-        axios["delete"]('/api/admin/coupons/' + item.id).then(function (res) {
+        axios["delete"]('/api/admin/reviews/' + item.id).then(function (res) {
+          _this2.text = 'Review deleted successfully.';
           _this2.snackbar = true;
 
-          _this2.coupons.splice(index, 1);
+          _this2.reviews.splice(index, 1);
         })["catch"](function (err) {
           return console.log(err.response);
         });
@@ -230,28 +269,58 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       if (this.editedIndex > -1) {
-        axios.put('/api/admin/coupons/' + this.editedItem.id, this.editedItem); //   .then(res => Object.assign(this.coupons[this.editedIndex], res.data.data.coupon))
+        axios.put('/api/admin/roles/' + this.editedItem.id, {
+          'name': this.editedItem.name
+        }); //   .then(res => Object.assign(this.roles[this.editedIndex], res.data.data.role))
         //  .catch(err => console.log(err.response))
 
-        Object.assign(this.coupons[this.editedIndex], this.editedItem);
+        Object.assign(this.roles[this.editedIndex], this.editedItem);
       } else {
-        axios.post('/api/admin/coupons', this.editedItem).then(function (res) {
-          return _this4.coupons.push(res.data.coupon);
+        axios.post('/api/admin/roles', {
+          'name': this.editedItem.name
+        }).then(function (res) {
+          return _this4.roles.push(res.data.data.role);
         })["catch"](function (err) {
           return console.dir(err.response);
         });
       }
 
       this.close();
+    },
+    approveItem: function approveItem(item) {
+      var _this5 = this;
+
+      var index = this.reviews.indexOf(item);
+      axios.put('/api/admin/ratings/approve/' + item.id).then(function (res) {
+        _this5.text = 'Review approved successully.';
+        _this5.snackbar = true;
+
+        _this5.initialize();
+      })["catch"](function (err) {
+        return console.log(err.response);
+      });
+    },
+    approveTestimonial: function approveTestimonial(item) {
+      var _this6 = this;
+
+      var index = this.reviews.indexOf(item);
+      axios.put('/api/admin/ratings/approve-testimonial/' + item.id).then(function (res) {
+        _this6.text = 'Testimonial approved successully.';
+        _this6.snackbar = true;
+
+        _this6.initialize();
+      })["catch"](function (err) {
+        return console.log(err.response);
+      });
     }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/admin/Coupons.vue?vue&type=template&id=809b3584&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/admin/Ratings.vue?vue&type=template&id=70cfde27&":
 /*!***********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/admin/Coupons.vue?vue&type=template&id=809b3584& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/admin/Ratings.vue?vue&type=template&id=70cfde27& ***!
   \***********************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -269,7 +338,7 @@ var render = function() {
     [
       _c("v-data-table", {
         staticClass: "elevation-1",
-        attrs: { headers: _vm.headers, items: _vm.coupons, "sort-by": "id" },
+        attrs: { headers: _vm.headers, items: _vm.reviews, "sort-by": "id" },
         scopedSlots: _vm._u([
           {
             key: "top",
@@ -279,7 +348,7 @@ var render = function() {
                   "v-toolbar",
                   { attrs: { flat: "", color: "white" } },
                   [
-                    _c("v-toolbar-title", [_vm._v("Coupons")]),
+                    _c("v-toolbar-title", [_vm._v("Latest Reviews")]),
                     _vm._v(" "),
                     _c("v-divider", {
                       staticClass: "mx-4",
@@ -292,27 +361,6 @@ var render = function() {
                       "v-dialog",
                       {
                         attrs: { "max-width": "500px" },
-                        scopedSlots: _vm._u([
-                          {
-                            key: "activator",
-                            fn: function(ref) {
-                              var on = ref.on
-                              return [
-                                _c(
-                                  "v-btn",
-                                  _vm._g(
-                                    {
-                                      staticClass: "mb-2",
-                                      attrs: { color: "primary", dark: "" }
-                                    },
-                                    on
-                                  ),
-                                  [_vm._v("New Coupon")]
-                                )
-                              ]
-                            }
-                          }
-                        ]),
                         model: {
                           value: _vm.dialog,
                           callback: function($$v) {
@@ -322,7 +370,6 @@ var render = function() {
                         }
                       },
                       [
-                        _vm._v(" "),
                         _c(
                           "v-card",
                           [
@@ -352,83 +399,17 @@ var render = function() {
                                           },
                                           [
                                             _c("v-text-field", {
-                                              attrs: { label: "Code" },
+                                              attrs: { label: "Role Name" },
                                               model: {
-                                                value: _vm.editedItem.code,
+                                                value: _vm.editedItem.name,
                                                 callback: function($$v) {
                                                   _vm.$set(
                                                     _vm.editedItem,
-                                                    "code",
+                                                    "name",
                                                     $$v
                                                   )
                                                 },
-                                                expression: "editedItem.code"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("v-select", {
-                                              attrs: {
-                                                items: _vm.type,
-                                                label: "Type"
-                                              },
-                                              model: {
-                                                value: _vm.editedItem.type,
-                                                callback: function($$v) {
-                                                  _vm.$set(
-                                                    _vm.editedItem,
-                                                    "type",
-                                                    $$v
-                                                  )
-                                                },
-                                                expression: "editedItem.type"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("v-text-field", {
-                                              attrs: { label: "Value" },
-                                              model: {
-                                                value: _vm.editedItem.value,
-                                                callback: function($$v) {
-                                                  _vm.$set(
-                                                    _vm.editedItem,
-                                                    "value",
-                                                    $$v
-                                                  )
-                                                },
-                                                expression: "editedItem.value"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("v-text-field", {
-                                              attrs: { label: "Percentage" },
-                                              model: {
-                                                value:
-                                                  _vm.editedItem.percent_off,
-                                                callback: function($$v) {
-                                                  _vm.$set(
-                                                    _vm.editedItem,
-                                                    "percent_off",
-                                                    $$v
-                                                  )
-                                                },
-                                                expression:
-                                                  "editedItem.percent_off"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("v-switch", {
-                                              attrs: { label: "Status" },
-                                              model: {
-                                                value: _vm.editedItem.is_active,
-                                                callback: function($$v) {
-                                                  _vm.$set(
-                                                    _vm.editedItem,
-                                                    "is_active",
-                                                    $$v
-                                                  )
-                                                },
-                                                expression:
-                                                  "editedItem.is_active"
+                                                expression: "editedItem.name"
                                               }
                                             })
                                           ],
@@ -488,17 +469,97 @@ var render = function() {
               var item = ref.item
               return [
                 _c(
-                  "v-icon",
+                  "v-tooltip",
                   {
-                    staticClass: "mr-2",
-                    attrs: { small: "" },
-                    on: {
-                      click: function($event) {
-                        return _vm.editItem(item)
-                      }
-                    }
+                    attrs: { bottom: "" },
+                    scopedSlots: _vm._u(
+                      [
+                        {
+                          key: "activator",
+                          fn: function(ref) {
+                            var on = ref.on
+                            var attrs = ref.attrs
+                            return [
+                              _c(
+                                "span",
+                                _vm._g(_vm._b({}, "span", attrs, false), on),
+                                [
+                                  _c(
+                                    "v-icon",
+                                    {
+                                      staticClass: "mr-2",
+                                      attrs: { small: "" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.approveItem(item)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n        mdi-check-circle\n      "
+                                      )
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            ]
+                          }
+                        }
+                      ],
+                      null,
+                      true
+                    )
                   },
-                  [_vm._v("\n        mdi-pencil\n      ")]
+                  [_vm._v(" "), _c("span", [_vm._v("Approve")])]
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-tooltip",
+                  {
+                    attrs: { bottom: "" },
+                    scopedSlots: _vm._u(
+                      [
+                        {
+                          key: "activator",
+                          fn: function(ref) {
+                            var on = ref.on
+                            var attrs = ref.attrs
+                            return [
+                              _c(
+                                "span",
+                                _vm._g(_vm._b({}, "span", attrs, false), on),
+                                [
+                                  _c(
+                                    "v-icon",
+                                    {
+                                      staticClass: "mr-2",
+                                      attrs: { small: "" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.approveTestimonial(item)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n        mdi-text-box-check\n      "
+                                      )
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            ]
+                          }
+                        }
+                      ],
+                      null,
+                      true
+                    )
+                  },
+                  [_vm._v(" "), _c("span", [_vm._v("Approve Testimonial")])]
                 ),
                 _vm._v(" "),
                 _c(
@@ -547,7 +608,7 @@ var render = function() {
           }
         },
         [
-          _vm._v("\n    Record deleted successfully.\n    "),
+          _vm._v("\n    " + _vm._s(_vm.text) + "\n    "),
           _c(
             "v-btn",
             {
@@ -574,17 +635,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/views/admin/Coupons.vue":
+/***/ "./resources/js/views/admin/Ratings.vue":
 /*!**********************************************!*\
-  !*** ./resources/js/views/admin/Coupons.vue ***!
+  !*** ./resources/js/views/admin/Ratings.vue ***!
   \**********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Coupons_vue_vue_type_template_id_809b3584___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Coupons.vue?vue&type=template&id=809b3584& */ "./resources/js/views/admin/Coupons.vue?vue&type=template&id=809b3584&");
-/* harmony import */ var _Coupons_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Coupons.vue?vue&type=script&lang=js& */ "./resources/js/views/admin/Coupons.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Ratings_vue_vue_type_template_id_70cfde27___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Ratings.vue?vue&type=template&id=70cfde27& */ "./resources/js/views/admin/Ratings.vue?vue&type=template&id=70cfde27&");
+/* harmony import */ var _Ratings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Ratings.vue?vue&type=script&lang=js& */ "./resources/js/views/admin/Ratings.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -594,9 +655,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Coupons_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Coupons_vue_vue_type_template_id_809b3584___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Coupons_vue_vue_type_template_id_809b3584___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Ratings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Ratings_vue_vue_type_template_id_70cfde27___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Ratings_vue_vue_type_template_id_70cfde27___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -606,38 +667,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/views/admin/Coupons.vue"
+component.options.__file = "resources/js/views/admin/Ratings.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/views/admin/Coupons.vue?vue&type=script&lang=js&":
+/***/ "./resources/js/views/admin/Ratings.vue?vue&type=script&lang=js&":
 /*!***********************************************************************!*\
-  !*** ./resources/js/views/admin/Coupons.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/views/admin/Ratings.vue?vue&type=script&lang=js& ***!
   \***********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Coupons_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Coupons.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/admin/Coupons.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Coupons_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Ratings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Ratings.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/admin/Ratings.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Ratings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/views/admin/Coupons.vue?vue&type=template&id=809b3584&":
+/***/ "./resources/js/views/admin/Ratings.vue?vue&type=template&id=70cfde27&":
 /*!*****************************************************************************!*\
-  !*** ./resources/js/views/admin/Coupons.vue?vue&type=template&id=809b3584& ***!
+  !*** ./resources/js/views/admin/Ratings.vue?vue&type=template&id=70cfde27& ***!
   \*****************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Coupons_vue_vue_type_template_id_809b3584___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Coupons.vue?vue&type=template&id=809b3584& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/admin/Coupons.vue?vue&type=template&id=809b3584&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Coupons_vue_vue_type_template_id_809b3584___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Ratings_vue_vue_type_template_id_70cfde27___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Ratings.vue?vue&type=template&id=70cfde27& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/admin/Ratings.vue?vue&type=template&id=70cfde27&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Ratings_vue_vue_type_template_id_70cfde27___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Coupons_vue_vue_type_template_id_809b3584___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Ratings_vue_vue_type_template_id_70cfde27___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

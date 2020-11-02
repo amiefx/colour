@@ -34,7 +34,10 @@ import Vue2Editor from "vue2-editor";
 Vue.use(Vue2Editor);
 
 import VueMeta from 'vue-meta';
-Vue.use(VueMeta)
+Vue.use(VueMeta);
+
+import VueSilentbox from 'vue-silentbox';
+Vue.use(VueSilentbox);
 
 import VueHtmlToPaper from 'vue-html-to-paper';
 const options2 = {

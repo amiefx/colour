@@ -4,37 +4,6 @@
       <sideNavigation />
 
       <v-divider class="mx-5"></v-divider>
-      <!-- second part --->
-      <!-- <v-list dense>
-        <template v-for="item in items2">
-          <v-list-group
-            v-if="item.children"
-            :key="item.name"
-            v-model="item.model"
-            :append-icon="item.model ? 'mdi-chevron-down' : 'mdi-chevron-up'"
-          >
-            <template v-slot:activator>
-              <v-list-item-content>
-                <v-list-item-title>{{ item.name }}</v-list-item-title>
-              </v-list-item-content>
-            </template>
-            <v-list-item v-for="(child, i) in item.children" :key="i" link :to="child.link">
-              <v-list-item-action v-if="child.icon">
-                <v-icon>mdi-chevron-right</v-icon>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>{{ child.name }}</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list-group>
-          <v-list-item v-else :key="item.name" link :to="item.link">
-            <v-list-item-content>
-              <v-list-item-title>{{ item.name }}</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </template>
-      </v-list> -->
-      <!-- second part --->
 
       <!-- third part --->
       <logout />
@@ -46,7 +15,7 @@
 
       <div class="top">
         <div class="social">
-          <div class="email bold text"><a href="mailto:atouchofcolor@hotmail.com"> atouchofcolor@hotmail.com</a></div>
+          <div class="email bold text"><a href="mailto:atouchofcolour@hotmail.com"> atouchofcolour@hotmail.com</a></div>
           <div class="" v-for="icon in socialicons" :key="icon.id" icon>
             <v-btn
               :color="icon.color"
@@ -62,13 +31,13 @@
         </div>
         <div class="logo">
           <router-link to="/">
-             <v-img height="60" width="70" :src="logoImg" alt="Khodgi" />
+             <v-img width="380"  :src="logoImg" alt="a touch of colour" />
           </router-link>
         </div>
         <div class="phon font-weight-bold">
-          <a href="tel:+923003812345">
-            <v-icon>mdi-phone-in-talk-outline</v-icon>
-            +92 300 1234567</a>
+          <a href="tel:+61417382263">
+            <v-icon color="primary">mdi-phone-in-talk-outline</v-icon>
+            +61 417 382 263</a>
         </div>
       </div>
       
@@ -85,42 +54,12 @@
 
       <span class="text-center mx-auto my-auto">
         <router-link to="/">
-          <v-img width="55" :src="logoImg" alt="Khodgi" />
+          <v-img width="55" :src="logoImg2" alt="a touch of colour" />
         </router-link>
       </span>
-
-      <Search />
-
-      <MiniCart />
     </v-app-bar>
 
     <v-content class="pt-0">
-
-      
-
-      <!-- <div v-if="this.$route.path == '/'">
-      <v-carousel hide-delimiters height="600" class="hidden-sm-and-down">
-        <v-carousel-item
-          v-for="(item,i) in homeSlides"
-          :key="i"
-          :src="item.large_image"
-          :to="`/collection/${item.link}`"
-        ></v-carousel-item>
-      </v-carousel>
-
-      <v-carousel hide-delimiters height="600" class="hidden-md-and-up">
-        <v-carousel-item
-          v-for="(item,i) in homeSlides"
-          :key="i"
-          :src="item.small_image"
-          :to="`/collection/${item.link}`"
-        ></v-carousel-item>
-      </v-carousel>
-    </div> -->
-
-      <!-- <v-container fluid>
-        <slot />
-      </v-container> -->
 
       <slot />
 
@@ -156,7 +95,8 @@ export default {
   data: () => ({
     dialog: false,
     drawer: false,
-    logoImg: window.location.origin + "/storage/images/khodgilogo.png",
+    logoImg: window.location.origin + "/storage/images/Logo3.png",
+    logoImg2: window.location.origin + "/storage/images/favicon.png",
     items: [],
     items2: [
       {
@@ -244,7 +184,7 @@ export default {
 }
 
 .app-bar {
-  background-color: #eee;
+  background-color: #fff;
   display: grid;
   grid-template-rows: 100px 50px;
 }
@@ -296,6 +236,9 @@ a {
   display: grid;
   justify-items: center;
   align-items: center;
+
+  border-bottom: 1px solid #999;
+  box-shadow: dimgrey;
 }
 
 

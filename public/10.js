@@ -1,14 +1,20 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[10],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/account/Index.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/account/Index.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Interior.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Interior.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_loading_overlay__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-loading-overlay */ "./node_modules/vue-loading-overlay/dist/vue-loading.min.js");
+/* harmony import */ var vue_loading_overlay__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_loading_overlay__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-loading-overlay/dist/vue-loading.css */ "./node_modules/vue-loading-overlay/dist/vue-loading.css");
+/* harmony import */ var vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_global_Gallery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/global/Gallery */ "./resources/js/components/global/Gallery.vue");
+/* harmony import */ var _components_global_Testimonial__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/global/Testimonial */ "./resources/js/components/global/Testimonial.vue");
 //
 //
 //
@@ -59,197 +65,121 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+// Import component
+ // Import stylesheet
+
+
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  layout: 'khod',
-  middleware: ['auth'],
+  components: {
+    Loading: vue_loading_overlay__WEBPACK_IMPORTED_MODULE_0___default.a,
+    Gallery: _components_global_Gallery__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Testimonial: _components_global_Testimonial__WEBPACK_IMPORTED_MODULE_3__["default"]
+  },
   metaInfo: {
     // title will be injected into parent titleTemplate
-    title: 'Profile',
-    titleTemplate: '%s | Khodgi'
+    title: 'Interior Design',
+    titleTemplate: '%s | A TOUCH OF COLOUR'
   },
   data: function data() {
     return {
-      valid: true,
-      dialog: false,
-      dialogPhoto: false,
-      selectedFile: null,
-      users: {
-        id: "",
-        name: "",
-        email: "",
-        role: "",
-        photo: "",
-        password: "",
-        password_confirmation: "",
-        current_password: "",
-        created_at: ""
-      },
-      item: [],
-      editedIndex: -1,
-      editedItem: {
-        id: "",
-        name: "",
-        email: "",
-        role: "",
-        photo: "",
-        created_at: ""
-      },
-      rules: {
-        required: function required(v) {
-          return !!v || "This Field is Required";
-        },
-        min: function min(v) {
-          return v.length >= 4 || "Minimum 5 Chracters Required";
-        },
-        validEmail: function validEmail(v) {
-          return /.+@.+\..+/.test(v) || "Email must be valid";
-        }
-      }
+      images: [{
+        src: window.location.origin + '/storage/images/interior painting (1).jpg',
+        description: ''
+      }, {
+        src: window.location.origin + '/storage/images/interior painting (2).jpg',
+        description: ''
+      }, {
+        src: window.location.origin + '/storage/images/interior painting (3).jpg',
+        description: ''
+      }, {
+        src: window.location.origin + '/storage/images/interior painting (4).jpg',
+        description: ''
+      }, {
+        src: window.location.origin + '/storage/images/interior painting (5).jpg',
+        description: ''
+      }, {
+        src: window.location.origin + '/storage/images/interior painting (6).jpg',
+        description: ''
+      }, {
+        src: window.location.origin + '/storage/images/interior painting (7).jpg',
+        description: ''
+      }, {
+        src: window.location.origin + '/storage/images/interior painting (8).jpg',
+        description: ''
+      }, {
+        src: window.location.origin + '/storage/images/interior painting (9).jpg',
+        description: ''
+      }, {
+        src: window.location.origin + '/storage/images/interior painting (10).jpg',
+        description: ''
+      }, {
+        src: window.location.origin + '/storage/images/interior painting (11).jpg',
+        description: ''
+      }, {
+        src: window.location.origin + '/storage/images/interior painting (12).jpg',
+        description: ''
+      }]
     };
-  },
-  methods: {
-    uploadPhoto: function uploadPhoto(item) {
-      var _this = this;
-
-      if (this.editedItem.photo != null) {
-        var index = this.users.id;
-        var formData = new FormData();
-        formData.append("photo", this.editedItem.photo, this.editedItem.photo.name);
-        formData.append("user", this.users.id);
-        axios.post("/api/change-photo", formData).then(function (res) {
-          _this.users = res.data.user; // this.editedItem.photo = null
-        })["catch"](function (err) {
-          return console.log(err.response);
-        });
-      }
-    },
-    save: function save() {
-      var _this2 = this;
-
-      axios.put("/api/settings/password", this.users).then(function (res) {
-        _this2.users = res.data.data;
-        _this2.text = "Record Updated Successfully!";
-        _this2.snackbar = true;
-        _this2.dialog = false;
-
-        _this2.$router.push('/signin');
-      })["catch"](function (err) {
-        console.log(err.response);
-        _this2.text = "Error Updating Record";
-        _this2.snackbar = true;
-      });
-    }
-  },
-  created: function created() {
-    var _this3 = this;
-
-    axios.get('/api/me').then(function (res) {
-      _this3.users = res.data.data;
-    })["catch"](function (err) {
-      console.log(err.response);
-    });
-  },
-  computed: {
-    passwordMatch: function passwordMatch() {
-      return this.users.password != this.users.password_confirmation ? "Password does Not Match" : true;
-    },
-    userdata: function userdata() {// return this.users =  this.$auth.user
-    }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/account/Index.vue?vue&type=template&id=440e703e&":
-/*!***********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/account/Index.vue?vue&type=template&id=440e703e& ***!
-  \***********************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Interior.vue?vue&type=style&index=0&lang=scss&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Interior.vue?vue&type=style&index=0&lang=scss& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".parallax {\n  position: relative;\n  opacity: 0.7;\n  background-position: center;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-attachment: fixed;\n}\n.hero {\n  min-height: 100vh;\n  background-image: url(\"http://localhost:8000/storage/images/home8.jpg\");\n  align-items: center;\n  text-align: center;\n  padding: 50px;\n}\n.detail2 {\n  min-height: 80vh;\n  background-image: url(\"http://localhost:8000/storage/images/home7.jpeg\");\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));\n  gap: 50px;\n  align-items: stretch;\n  text-align: center;\n  padding: 50px;\n}\n.bx-1 {\n  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));\n  border-radius: 25px;\n  color: white;\n  padding: 15px;\n}\n.bx--light {\n  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));\n  border-radius: 25px;\n  padding: 15px;\n}\n.large_text {\n  font-size: 3rem;\n  color: #000;\n}\n.devider {\n  height: 5px;\n  width: 100vw;\n  background-color: blue;\n  margin: 15px 0px;\n}\n.blue {\n  background-color: blue;\n}\n.green {\n  background-color: green;\n}\n.yellow {\n  background-color: yellow;\n}\n.red {\n  background-color: red;\n}\n.list {\n  text-align: start;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Interior.vue?vue&type=style&index=0&lang=scss&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Interior.vue?vue&type=style&index=0&lang=scss& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--8-2!../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../node_modules/vue-loader/lib??vue-loader-options!./Interior.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Interior.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Interior.vue?vue&type=template&id=560d61cf&":
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Interior.vue?vue&type=template&id=560d61cf& ***!
+  \******************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -262,430 +192,154 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-container",
+    "div",
     [
       _c(
-        "v-card",
-        { staticClass: "mx-auto" },
+        "v-row",
+        { staticClass: "hero parallax" },
         [
           _c(
-            "v-list",
+            "v-col",
+            {
+              staticClass: "b1 pa-10",
+              attrs: { cols: "12", sm: "12", md: "6", lg: "6", xl: "6" }
+            },
             [
-              _c(
-                "v-list-item",
-                [
-                  _c(
-                    "v-list-item-icon",
-                    [
-                      _c(
-                        "v-list-item-avatar",
-                        [_c("v-img", { attrs: { src: _vm.users.photo } })],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("v-list-item-content"),
-                  _vm._v(" "),
-                  _c(
-                    "v-list-item-action",
-                    [
-                      _c(
-                        "v-dialog",
-                        {
-                          attrs: { "max-width": "300px" },
-                          scopedSlots: _vm._u([
-                            {
-                              key: "activator",
-                              fn: function(ref) {
-                                var on = ref.on
-                                return [
-                                  _c(
-                                    "v-btn",
-                                    _vm._g({ attrs: { icon: "" } }, on),
-                                    [
-                                      _c("v-icon", [
-                                        _vm._v("mdi-camera-account")
-                                      ])
-                                    ],
-                                    1
-                                  )
-                                ]
-                              }
-                            }
-                          ]),
-                          model: {
-                            value: _vm.dialogPhoto,
-                            callback: function($$v) {
-                              _vm.dialogPhoto = $$v
-                            },
-                            expression: "dialogPhoto"
-                          }
-                        },
-                        [
-                          _vm._v(" "),
-                          _c(
-                            "v-card",
-                            [
-                              _c("v-card-title", [
-                                _c("span", { staticClass: "headline" }, [
-                                  _vm._v("Update Profile Photo")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "v-card-text",
-                                [
-                                  _c(
-                                    "v-col",
-                                    { attrs: { cols: "12" } },
-                                    [
-                                      _c("v-file-input", {
-                                        attrs: {
-                                          label: "Select Photo",
-                                          placeholder: "Upload Avatar",
-                                          accept:
-                                            "image/jpg, image/png, image/bmp, image/jpeg"
-                                        },
-                                        on: {
-                                          change: function($event) {
-                                            return _vm.uploadPhoto(_vm.item)
-                                          }
-                                        },
-                                        model: {
-                                          value: _vm.editedItem.photo,
-                                          callback: function($$v) {
-                                            _vm.$set(
-                                              _vm.editedItem,
-                                              "photo",
-                                              $$v
-                                            )
-                                          },
-                                          expression: "editedItem.photo"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
+              _c("h1", { staticClass: "large_text my-6" }, [
+                _vm._v(
+                  "\n              Interior Design in Australlia\n          "
+                )
+              ]),
               _vm._v(" "),
               _c(
-                "v-list-item",
-                [
-                  _c(
-                    "v-list-item-content",
-                    [
-                      _c("v-list-item-title", { staticClass: "title" }, [
-                        _vm._v(_vm._s(_vm.users.name))
-                      ]),
-                      _vm._v(" "),
-                      _c("v-list-item-subtitle", [
-                        _vm._v(_vm._s(_vm.users.email))
-                      ])
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-list-item-action",
-                    [
-                      _c(
-                        "v-icon",
-                        {
-                          on: {
-                            click: function($event) {
-                              _vm.dialog = !_vm.dialog
-                            }
-                          }
-                        },
-                        [_vm._v("mdi-pencil")]
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
+                "v-btn",
+                {
+                  staticClass: "mb-6",
+                  attrs: { dark: "", color: "primary", to: "/contact" }
+                },
+                [_vm._v("Contact Us")]
               )
             ],
             1
           ),
           _vm._v(" "),
-          _c("v-divider"),
-          _vm._v(" "),
           _c(
-            "v-list",
+            "v-col",
+            {
+              staticClass: "bx-1 ma-0",
+              attrs: { cols: "12", sm: "12", md: "6", lg: "6", xl: "6" }
+            },
             [
-              _c(
-                "v-list-item",
-                [
-                  _c(
-                    "v-list-item-icon",
-                    [
-                      _c("v-icon", { attrs: { color: "indigo" } }, [
-                        _vm._v("mdi-email")
-                      ])
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-list-item-content",
-                    [
-                      _c("v-list-item-title", [
-                        _vm._v(_vm._s(_vm.users.email))
-                      ]),
-                      _vm._v(" "),
-                      _c("v-list-item-subtitle", [_vm._v("Email")])
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("v-divider", { attrs: { inset: "" } }),
-              _vm._v(" "),
-              _c(
-                "v-list-item",
-                [
-                  _c(
-                    "v-list-item-icon",
-                    [
-                      _c("v-icon", { attrs: { color: "indigo" } }, [
-                        _vm._v("mdi-account-box")
-                      ])
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-list-item-content",
-                    [
-                      _c("v-list-item-title", [_vm._v(_vm._s(_vm.users.name))]),
-                      _vm._v(" "),
-                      _c("v-list-item-subtitle", [_vm._v("User Name")])
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
+              _c("h3", { staticClass: "my-6" }, [
+                _vm._v(
+                  "We work alongside one of Londons finest interior designers. "
+                ),
+                _c("br"),
+                _vm._v(
+                  "\n\nWith 20 years’ experience in delivering designs that are full of clever ideas. We’ll start with a Project Consultation of your style, needs and budget. We’ll suggest innovative design solutions and arrive at a concept that’s full of personality and perfectly fits your needs. "
+                ),
+                _c("br"),
+                _vm._v(
+                  "\n\nWhether it’s a budget bathroom or a commercial refurbishment, our designers are bubbling with ideas. We make sure our home owners, property developers and commercial clients get straight-talking practical advice and clever interior solutions. No fluff. Just sensible stuff which balances the latest from the design world with our tried-and-tested know-how. "
+                )
+              ])
+            ]
           )
         ],
         1
       ),
       _vm._v(" "),
-      _c(
-        "v-dialog",
-        {
-          attrs: { width: "500px" },
-          model: {
-            value: _vm.dialog,
-            callback: function($$v) {
-              _vm.dialog = $$v
-            },
-            expression: "dialog"
-          }
-        },
-        [
-          _c(
-            "v-card",
-            [
-              _c("v-card-title", {}, [_vm._v("Update Profile")]),
-              _vm._v(" "),
-              _c(
-                "v-form",
-                {
-                  attrs: { method: "post" },
-                  on: {
-                    submit: function($event) {
-                      $event.stopPropagation()
-                      $event.preventDefault()
-                      return _vm.save($event)
-                    }
-                  },
-                  model: {
-                    value: _vm.valid,
-                    callback: function($$v) {
-                      _vm.valid = $$v
-                    },
-                    expression: "valid"
-                  }
-                },
-                [
-                  _c(
-                    "v-card-text",
-                    [
-                      _c(
-                        "v-container",
-                        [
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12" } },
-                            [
-                              _c("v-text-field", {
-                                attrs: {
-                                  "prepend-icon": "mdi-mail",
-                                  placeholder: "User Name",
-                                  rules: [_vm.rules.required, _vm.rules.min]
-                                },
-                                model: {
-                                  value: _vm.users.name,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.users, "name", $$v)
-                                  },
-                                  expression: "users.name"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  type: "password",
-                                  "prepend-icon": "mdi-lock",
-                                  placeholder: "Current Password",
-                                  rules: [_vm.rules.required]
-                                },
-                                model: {
-                                  value: _vm.users.current_password,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.users, "current_password", $$v)
-                                  },
-                                  expression: "users.current_password"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  type: "password",
-                                  "prepend-icon": "mdi-lock",
-                                  placeholder: "New Password",
-                                  rules: [_vm.rules.required]
-                                },
-                                model: {
-                                  value: _vm.users.password,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.users, "password", $$v)
-                                  },
-                                  expression: "users.password"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  type: "password",
-                                  "prepend-icon": "mdi-lock",
-                                  placeholder: "Confirm Password",
-                                  rules: [_vm.rules.required, _vm.passwordMatch]
-                                },
-                                model: {
-                                  value: _vm.users.password_confirmation,
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.users,
-                                      "password_confirmation",
-                                      $$v
-                                    )
-                                  },
-                                  expression: "users.password_confirmation"
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-actions",
-                    [
-                      _c("v-spacer"),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        {
-                          attrs: { color: "primary", text: "" },
-                          on: {
-                            click: function($event) {
-                              _vm.dialog = false
-                            }
-                          }
-                        },
-                        [_vm._v("Cancel")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        {
-                          attrs: {
-                            color: "primary",
-                            type: "submit",
-                            disabled: !_vm.valid
-                          },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.save($event)
-                            }
-                          }
-                        },
-                        [_vm._v("Save")]
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      )
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c("Gallery", { attrs: { images: _vm.images } }),
+      _vm._v(" "),
+      _c("Testimonial")
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "devider--1" }, [
+      _c("div", { staticClass: "devider blue" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "devider green" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "devider yellow" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "devider red" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "parallax detail2" }, [
+      _c("div", { staticClass: "bx-1" }, [
+        _c("h2", { staticClass: "my-6" }, [_vm._v("Space Planning")]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "The backbone of good interior design is making the space work. We aim to allocate every inch of sacred space in your home so it operates efficiently and adds value, so that when you walk around you feel “this just works”."
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "bx--light" }, [
+        _c("h2", { staticClass: "my-6" }, [
+          _vm._v("First Class Interior Design")
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "From a single room revamp to entire properties, our expert team have the ideas and experience to create the perfect layout for the way you want to live. Enquire with us today and see what we can do for you."
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "my-6" }, [
+          _vm._v("You can also come to us for property maintenance. ")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "bx-1" }, [
+        _c("h2", { staticClass: "my-6" }, [
+          _vm._v("Furniture and Lighting Design")
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "Every scheme, and every space is different so that bespoke furniture allows a balanced design to be achieved in the most effective way. Unique furniture and lighting gives our designers particularly considered high end feel."
+          )
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
 
 /***/ }),
 
-/***/ "./resources/js/views/account/Index.vue":
-/*!**********************************************!*\
-  !*** ./resources/js/views/account/Index.vue ***!
-  \**********************************************/
+/***/ "./resources/js/views/Interior.vue":
+/*!*****************************************!*\
+  !*** ./resources/js/views/Interior.vue ***!
+  \*****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Index_vue_vue_type_template_id_440e703e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Index.vue?vue&type=template&id=440e703e& */ "./resources/js/views/account/Index.vue?vue&type=template&id=440e703e&");
-/* harmony import */ var _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Index.vue?vue&type=script&lang=js& */ "./resources/js/views/account/Index.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _Interior_vue_vue_type_template_id_560d61cf___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Interior.vue?vue&type=template&id=560d61cf& */ "./resources/js/views/Interior.vue?vue&type=template&id=560d61cf&");
+/* harmony import */ var _Interior_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Interior.vue?vue&type=script&lang=js& */ "./resources/js/views/Interior.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Interior_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Interior.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/views/Interior.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -693,10 +347,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Index_vue_vue_type_template_id_440e703e___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Index_vue_vue_type_template_id_440e703e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Interior_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Interior_vue_vue_type_template_id_560d61cf___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Interior_vue_vue_type_template_id_560d61cf___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -706,38 +360,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/views/account/Index.vue"
+component.options.__file = "resources/js/views/Interior.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/views/account/Index.vue?vue&type=script&lang=js&":
-/*!***********************************************************************!*\
-  !*** ./resources/js/views/account/Index.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************/
+/***/ "./resources/js/views/Interior.vue?vue&type=script&lang=js&":
+/*!******************************************************************!*\
+  !*** ./resources/js/views/Interior.vue?vue&type=script&lang=js& ***!
+  \******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/account/Index.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Interior_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Interior.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Interior.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Interior_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/views/account/Index.vue?vue&type=template&id=440e703e&":
-/*!*****************************************************************************!*\
-  !*** ./resources/js/views/account/Index.vue?vue&type=template&id=440e703e& ***!
-  \*****************************************************************************/
+/***/ "./resources/js/views/Interior.vue?vue&type=style&index=0&lang=scss&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/views/Interior.vue?vue&type=style&index=0&lang=scss& ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Interior_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--8-2!../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../node_modules/vue-loader/lib??vue-loader-options!./Interior.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Interior.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Interior_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Interior_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Interior_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Interior_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Interior_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/views/Interior.vue?vue&type=template&id=560d61cf&":
+/*!************************************************************************!*\
+  !*** ./resources/js/views/Interior.vue?vue&type=template&id=560d61cf& ***!
+  \************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_440e703e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Index.vue?vue&type=template&id=440e703e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/account/Index.vue?vue&type=template&id=440e703e&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_440e703e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Interior_vue_vue_type_template_id_560d61cf___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Interior.vue?vue&type=template&id=560d61cf& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Interior.vue?vue&type=template&id=560d61cf&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Interior_vue_vue_type_template_id_560d61cf___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_440e703e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Interior_vue_vue_type_template_id_560d61cf___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -1,7 +1,6 @@
 <template>
   <div>
-
-  <div class="welcome">
+     <div class="welcome">
         <div class="box--1">
           <h1>Welcome to <br>
               A Touch of Colour
@@ -14,45 +13,50 @@
         </div>
         <div class="box--2">
           <div class="intro pa-5">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque porro maxime iusto tempore molestiae iure sit doloribus facilis illum? Aliquam provident expedita quos tempora assumenda iste deserunt placeat unde quo.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate, dolor. Recusandae tempore eum, et repudiandae nemo magnam accusamus nihil temporibus sed in aut saepe. Deleniti at fuga eveniet voluptatum magni?
-            Praesentium tenetur fuga assumenda laboriosam adipisci doloribus? Nostrum ab cumque a nam consequatur. Cum, voluptate accusamus natus magnam similique soluta quaerat molestiae exercitationem, pariatur fugiat cumque, aspernatur at consequatur sequi!
-            Porro fugiat alias voluptatum quia commodi veritatis deserunt eius obcaecati! Beatae corrupti, quaerat amet facilis iste aut mollitia reprehenderit reiciendis quis consectetur recusandae inventore necessitatibus. Vero soluta vitae nihil voluptas?
+            <p>
+              We prepare walls and surfaces prior to painting by washing them down with pressure wash, filling holes and cracks, scraping and removing old paint. We mix, match and apply paints and decorative finished to paint jobs such as stencilling, lettering and glazing.
+            </p>
+            <p>
+              We review every job to ensure nothing has been missed and that the customers are pleased with the service.
+            </p>
+            <p>
+              Enjoy new colour, new adventures and memories with <strong>A Touch of Colour</strong> and qualified painters with over 30 years of experience.
+            </p>
              <v-btn
                rounded
                color="primary"
                dark
+               @click="$vuetify.goTo('#testimonials',options)"
                >
-               Rounded Button
+               Testimonials
               </v-btn> 
           </div>
           <div class="contact pa-5">
-            <h3>We want to hear from you</h3>
+            <h3 class="mb-2">We want to hear from you</h3>
             <p>
               Send us your details and we’ll get back to you to schedule a time to talk.
             </p>
-            <v-form class="text-white">
+            <v-form v-model="valid" method="post" @submit.prevent="submit">
               <v-text-field
                 label="Name"
                 hide-details="auto"
+                v-model="form.name"
               ></v-text-field>
               <v-text-field
                 label="Emal"
                 hide-details="auto"
+                v-model="form.email"
               ></v-text-field>
               <v-text-field
                 label="Phone"
                 hide-details="auto"
+                v-model="form.phone"
                 class="mb-5"
               ></v-text-field>
-
-              <v-btn
-               rounded
-               color="primary"
-               dark
-               >
-               Rounded Button
-              </v-btn>
+              <v-alert dark color="primary" dense v-if="msg">
+                {{ text }}
+              </v-alert>
+              <v-btn rounded :loading="loading" color="primary" :disabled="!valid" type="submit">Send</v-btn>
 
             </v-form>
           </div>
@@ -60,10 +64,10 @@
       </div>
 
       <div class="devider--1">
-        <div class="blue"></div>
-        <div class="green"></div>
-        <div class="yellow"></div>
-        <div class="red"></div>
+        <div class="devider blue"></div>
+        <div class="devider green"></div>
+        <div class="devider yellow"></div>
+        <div class="devider red"></div>
       </div>
 
       <div class="services">
@@ -123,7 +127,21 @@
         </div>
       </div>
 
+    <Gallery :images="images" />
+    
+    <div id="testimonials">
+      <Testimonial />
+    </div>
 
+    <div class="devider--1">
+        <div class="devider blue"></div>
+        <div class="devider green"></div>
+        <div class="devider yellow"></div>
+        <div class="devider red"></div>
+      </div>
+
+    <Ratings />
+    
 
     <div class="vld-parent">
         <loading
@@ -138,22 +156,37 @@
 </template>
 
 <script>
-import Sections from '../components/home/Sections.vue'
-import Product from '../components/products/Product'
 import { mapGetters, mapActions } from 'vuex'
 // Import component
 import Loading from 'vue-loading-overlay';
 // Import stylesheet
 import 'vue-loading-overlay/dist/vue-loading.css';
+
+import Gallery from '../components/global/Gallery';
+import Testimonial from '../components/global/Testimonial';
+import Ratings from '../components/global/Ratings';
+
 export default {
   components: {
-    Sections,
-    Product,
-    Loading
+    Loading,
+    Gallery,
+    Testimonial,
+    Ratings
   },
 
   data: () => {
       return {
+        form: {
+          name: '',
+          email: '',
+          phone: '',
+          message: '',
+        },
+        text: '',
+        msg: false,
+        valid: true,
+        loading: false,
+
         products: [],
         isLoading: false,
         fullPage: false,
@@ -161,30 +194,89 @@ export default {
         isActive: false,
         pagination: {},
         page: 1,
+        basePath: window.location.origin,
+        welcomeImg: window.location.origin + "/storage/images/Exterior 1.jpg",
+
+        images: [
+            {
+                src: window.location.origin + '/storage/images/church_ (3).jpg',
+                description: '',
+            },
+            {
+                src: window.location.origin + '/storage/images/church_ (1).jpg',
+                description: '',
+            },
+            {
+                src: window.location.origin + '/storage/images/exterior painting (27).jpg',
+                description: '',
+            },
+            {
+                src: window.location.origin + '/storage/images/exterior painting (28).jpg',
+                description: '',
+            },
+            {
+                src: window.location.origin + '/storage/images/painting_ (9).jpg',
+                description: '',
+            },
+            {
+                src: window.location.origin + '/storage/images/painting_ (8).jpg',
+                description: '',
+            },
+            {
+                src: window.location.origin + '/storage/images/painting_ (7).jpg',
+                description: '',
+            },
+            {
+                src: window.location.origin + '/storage/images/painting_ (6).jpg',
+                description: '',
+            },
+            {
+                src: window.location.origin + '/storage/images/exterior painting (38).jpg',
+                description: '',
+            },
+            {
+                src: window.location.origin + '/storage/images/exterior painting (42).jpg',
+                description: '',
+            },
+            {
+                src: window.location.origin + '/storage/images/exterior painting (43).jpg',
+                description: '',
+            },
+            {
+                src: window.location.origin + '/storage/images/Exterior 4.jpg',
+                description: '',
+            },
+            {
+                src: window.location.origin + '/storage/images/Exterior 6.jpg',
+                description: '',
+            },
+            {
+                src: window.location.origin + '/storage/images/Exterior 7.jpg',
+                description: '',
+            },
+            {
+                src: window.location.origin + '/storage/images/Exterior 8.jpg',
+                description: '',
+            },
+            {
+                src: window.location.origin + '/storage/images/exterior painting (32).jpg',
+                description: '',
+            },
+   
+        ],
+
       }
   },
 
-//   computed: {
-//     ...mapGetters({
-//       products: 'home/home_products'
-//     }),
-//   },
-
   created() {
-      //  this.getHomeProducts()
         this.loadingStart()
     },
 
   mounted() {
       this.loadingEnd()
-
-      this.fetchProduct()
   },
 
     methods: {
-        // ...mapActions({
-        //     getHomeProducts: 'home/getHomeProducts'
-        // }),
 
         loadingStart() {
         this.isLoading = true;
@@ -195,35 +287,54 @@ export default {
             },1000)
         },
 
-        fetchProduct(pagei) {
-            pagei = pagei || '/api/products/get-home-products';
-        axios
-            .get(pagei)
-            .then(res => {
-          //  this.isLoading = false;
-            //   this.products = res.data.data;
-            this.products.push(...res.data.data);
-            this.pagination = {
-                path: res.data.meta.path+"?page=",
-                prev_page_url: res.data.links.prev,
-                next_page_url: res.data.links.next,
-                current_page : res.data.meta.current_page,
-                first_page_url: res.data.links.first,
-                last_page_url: res.data.links.last,
-            }
+      submit() {
 
-            })
-            .catch(err => {
-            console.log();
-            });
+      // Add a request interceptor
+      axios.interceptors.request.use(
+        config => {
+          this.loading = true
+          return config
         },
+        error => {
+          this.loading = false
+          return Promise.reject(error)
+        }
+      )
+
+      // Add a response interceptor
+      axios.interceptors.response.use(
+        response => {
+          this.loading = false
+          return response
+        },
+        error => {
+          this.loading = false
+          return Promise.reject(error)
+        }
+      )
+
+      axios.post('/api/messages', this.form)
+      .then(res => {
+          this.text = "Message sent successfully!";
+          this.form.name = '';
+          this.form.email = '';
+          this.form.phone = '';
+          this.msg = true;
+      })
+      .catch(err => {
+          this.text = err.response.data.errors[0]
+          this.snackbar = true;
+      })
+    },
 
     }
 
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
+
+$bp-medium: 50em; // 800px
 
 .VueCarousel-navigation-prev {
   left: 10% !important;
@@ -259,7 +370,7 @@ export default {
 
 .welcome {
   min-height: 100vh;
-  background-image: url(https://images.pexels.com/photos/1704120/pexels-photo-1704120.jpeg);
+  background-image: url('http://localhost:8000/storage/images/home1.jpeg');
 
   display: grid;
   grid-template-rows: 90vh max-content;
@@ -290,6 +401,11 @@ export default {
     font-size: 3rem;
   }
 
+  @media only screen and (max-width: $bp-medium) {
+        font-size: 2.5rem;
+        min-width: 80vw;
+    }
+
   .color {
     align-self: start;
     font-style: italic;
@@ -311,45 +427,52 @@ export default {
 .box--2 {
   min-height: 80vh;
   grid-row: 2 / 3;
-  padding: 15px 0;
+  padding: 5rem;
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   justify-content: space-around;
   align-content: space-around;
+  grid-gap: 5rem;
 
-  .intro, .contact {
+   @media only screen and (max-width: $bp-medium) {
+        padding: 2.5rem !important;
+        grid-gap: 2.5rem !important;
+    }
+
+  .intro {
     background-image: linear-gradient(to right, rgba(0,0,0, .6),  rgba(0,0,0, .6));
     border-radius: 25px;
     color: white;
     margin: 15px;
   }
 
+  .contact {
+    background-image: linear-gradient(to right, rgba(255,255,255, .6),  rgba(255,255,255, .6));
+    border-radius: 25px;
+    margin: 15px;
+  }
+
 }
 
-.blue {
-  height: 5px;
+.devider {
+    height: 5px;
   width: 100vw;
   background-color: blue;
   margin: 15px 0px;
 }
+
+.blue {
+  background-color: blue;
+}
 .green {
-  height: 5px;
-  width: 100vw;
   background-color: green;
-  margin: 15px 0px;
 }
 .yellow {
-  height: 5px;
-  width: 100vw;
   background-color: yellow;
-  margin: 15px 0px;
 }
 .red {
-  height: 5px;
-  width: 100vw;
   background-color: red;
-  margin: 15px 0px;
 }
 
 .services {
@@ -361,7 +484,7 @@ export default {
 
   padding: 30px;
   min-height: 100vh;
-  background-image: linear-gradient(to right, rgba(0,0,0, .8),  rgba(0,0,0, .8)), url(https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg);
+  background-image: linear-gradient(to right, rgba(0,0,0, .8),  rgba(0,0,0, .8)), url('http://localhost:8000/storage/images/Services 1.jpg');
   position: relative;
   opacity: 0.7;
   background-position: center;
@@ -394,5 +517,6 @@ svg {
   justify-self: center;
   align-self: center;
 }
+
 
 </style>

@@ -13,9 +13,9 @@ const defaultLayout = 'default'
         name: 'App',
         metaInfo: {
         // if no subcomponents specify a metaInfo.title, this title will be used
-        title: 'Khodgi',
+        title: 'A Touch of Colour',
         // all titles will be injected into this template
-        titleTemplate: '%s | Online Clothing Store'
+        titleTemplate: '%s | Home and Commercial Pinting'
         },
         computed: {
             layout() {
