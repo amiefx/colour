@@ -41,32 +41,44 @@
       <!-- third part --->
     </v-navigation-drawer>
 
-    <v-app-bar extended :clipped-left="$vuetify.breakpoint.mdAndUp" app class="hidden-sm-and-down">
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-md-and-up" />
+    <div class="hidden-sm-and-down app-bar">
+      <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-md-and-up" /> -->
 
-      <div class="logo">
-        <div>
+      <div class="top">
+        <div class="social">
+          <div class="email bold text"><a href="mailto:atouchofcolor@hotmail.com"> atouchofcolor@hotmail.com</a></div>
+          <div class="" v-for="icon in socialicons" :key="icon.id" icon>
+            <v-btn
+              :color="icon.color"
+              fab
+              small
+              dark
+              :href="icon.link" target="_blank"
+            >
+              <v-icon>{{ icon.icon }}</v-icon>
+            </v-btn>
+          </div>
+
+        </div>
+        <div class="logo">
           <router-link to="/">
              <v-img height="60" width="70" :src="logoImg" alt="Khodgi" />
           </router-link>
         </div>
+        <div class="phon font-weight-bold">
+          <a href="tel:+923003812345">
+            <v-icon>mdi-phone-in-talk-outline</v-icon>
+            +92 300 1234567</a>
+        </div>
       </div>
-      <div class="menu-icons mt-5">
-
-            <Search />
-
-            <login-avatar />
-
-            <MiniCart />
-
-      </div>
+      
 
 
-      <template v-slot:extension class="nav-menu d-flex justify-center">
+      <div class="nav">
         <top-nav />
-      </template>
+      </div>
 
-    </v-app-bar>
+    </div>
 
     <v-app-bar :clipped-left="$vuetify.breakpoint.mdAndUp" app class="hidden-md-and-up">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-md-and-up" />
@@ -82,9 +94,11 @@
       <MiniCart />
     </v-app-bar>
 
-    <v-content>
+    <v-content class="pt-0">
 
-      <div v-if="this.$route.path == '/'">
+      
+
+      <!-- <div v-if="this.$route.path == '/'">
       <v-carousel hide-delimiters height="600" class="hidden-sm-and-down">
         <v-carousel-item
           v-for="(item,i) in homeSlides"
@@ -102,11 +116,14 @@
           :to="`/collection/${item.link}`"
         ></v-carousel-item>
       </v-carousel>
-    </div>
+    </div> -->
 
-      <v-container fluid>
+      <!-- <v-container fluid>
         <slot />
-      </v-container>
+      </v-container> -->
+
+      <slot />
+
     </v-content>
 
   <fullFooter />
@@ -178,17 +195,20 @@ export default {
 
   computed: {
     ...mapGetters({
-       homeSlides: 'home/home_slides'
+       homeSlides: 'home/home_slides',
+       socialicons: 'social/social'
     })
   },
 
   created() {
     this.getHomeSlide();
+    this.getSocial();
   },
 
   methods: {
     ...mapActions({
       getHomeSlide: "home/getHomeSlide",
+      getSocial: 'social/getSocial',
     }),
   }
 
@@ -196,7 +216,8 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
 .v-card--reveal {
   align-items: center;
   bottom: 0;
@@ -214,14 +235,6 @@ export default {
   right: 30px;
 }
 
-.logo {
-  position: absolute;
-  justify-content: center;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 10px;
-}
-
 .nav-menu {
   position: absolute;
   justify-content: center;
@@ -229,5 +242,62 @@ export default {
   transform: translateX(-50%);
   background-color: transparent;
 }
+
+.app-bar {
+  background-color: #eee;
+  display: grid;
+  grid-template-rows: 100px 50px;
+}
+
+.top {
+  grid-row: 1 / 2;
+
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+
+  justify-items: center;
+  align-items: center;
+  justify-content: space-evenly;
+
+}
+
+.social {
+  grid-column: 1 / 2;
+
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+
+  justify-items: center;
+  align-items: center;
+
+  grid: 8px;
+
+  .email {
+    grid-row: 1 / 2;
+    grid-column: 1 / -1;
+  }
+
+}
+
+.logo {
+  grid-column: 2 / 3;
+}
+
+.phon {
+  grid-column: 3 / 4;
+}
+
+a {
+  text-decoration: none;
+}
+
+.nav {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+
 
 </style>

@@ -17,7 +17,7 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        component: () => import('../views/Home.vue'),
+        component: () => import(/* webpackPreload: true */ '../views/Home.vue'),
         meta: {
             layout: 'mardom'
         }
@@ -26,7 +26,7 @@ const routes = [
     {
         path: '/collection/:slug',
         name: 'product-collection',
-        component: () => import('../views/ProductCollection.vue'),
+        component: () => import(/* webpackPreload: true */ '../views/ProductCollection.vue'),
         meta: {
             layout: 'mardom'
         }
@@ -34,7 +34,7 @@ const routes = [
     {
         path: '/products/:slug',
         name: 'product',
-        component: () => import('../views/Product.vue'),
+        component: () => import(/* webpackPreload: true */ '../views/Product.vue'),
         meta: {
             layout: 'mardom'
         }
@@ -42,7 +42,7 @@ const routes = [
     {
         path: '/checkout',
         name: 'checkout',
-        component: () => import('../views/Checkout.vue'),
+        component: () => import(/* webpackPreload: true */ '../views/Checkout.vue'),
         meta: {
             layout: 'mardom'
         }
@@ -50,7 +50,7 @@ const routes = [
     {
         path: '/checkout/:id',
         name: 'order-complete',
-        component: () => import('../views/OrderComplete.vue'),
+        component: () => import(/* webpackPreload: true */ '../views/OrderComplete.vue'),
         meta: {
             layout: 'mardom'
         }
