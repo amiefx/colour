@@ -107,7 +107,7 @@ const routes = [
     {
         path: '/admin/notify',
         name: 'notify',
-        component: () => import('../views/admin/notify.vue'),
+        component: () => import('../views/admin/Notify.vue'),
         meta: {
             layout: 'admin',
             middleware: [
@@ -214,7 +214,7 @@ const routes = [
     {
         path: '/register',
         name: 'register',
-        component: () => import('../views/auth/register.vue'),
+        component: () => import('../views/auth/Register.vue'),
         meta: {
             layout: 'mardom',
             middleware: [
@@ -225,7 +225,7 @@ const routes = [
     {
         path: '/forgot-password',
         name: 'forgot-password',
-        component: () => import('../views/auth/forgot-password.vue'),
+        component: () => import('../views/auth/Forgot-password.vue'),
         meta: {
             layout: 'mardom',
             middleware: [
@@ -236,7 +236,7 @@ const routes = [
     {
         path: '/password-reset',
         name: 'password-reset',
-        component: () => import('../views/auth/password-reset.vue'),
+        component: () => import('../views/auth/Password-reset.vue'),
         meta: {
             layout: 'mardom',
             middleware: [

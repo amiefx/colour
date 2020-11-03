@@ -58,7 +58,7 @@ export default {
 
 .hero5 {
   min-height: 100vh;
-  background-image: url('http://localhost:8000/storage/images/home9.jpeg');
+  background-image: url('/storage/images/home9.jpeg');
 
   display: grid;
   align-items: center;

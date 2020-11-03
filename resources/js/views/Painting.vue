@@ -144,7 +144,7 @@ export default {
 
 .hero4 {
   min-height: 100vh;
-  background-image: url('http://localhost:8000/storage/images/home3.jpeg');
+  background-image: url('/storage/images/home3.jpeg');
 
   //display: grid;
  // grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -168,7 +168,7 @@ export default {
 
 .detail4 {
   min-height: 80vh;
-  background-image: url('http://localhost:8000/storage/images/home2.jpeg');
+  background-image: url('/storage/images/home2.jpeg');
 
  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));

@@ -112,7 +112,7 @@ export default {
 
 .hero2 {
   min-height: 100vh;
-  background-image: url('http://localhost:8000/storage/images/home6.jpeg');
+  background-image: url('/storage/images/home6.jpeg');
 
   
   align-items: center;
@@ -123,7 +123,7 @@ export default {
 
 .detail3 {
   min-height: 80vh;
-  background-image: url('http://localhost:8000/storage/images/Interior 1.jpg');
+  background-image: url('/storage/images/Interior 1.jpg');
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));

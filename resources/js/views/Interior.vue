@@ -142,7 +142,7 @@ export default {
 
 .hero {
   min-height: 100vh;
-  background-image: url('http://localhost:8000/storage/images/home8.jpg');
+  background-image: url('/storage/images/home8.jpg');
 
   
   align-items: center;
@@ -153,7 +153,7 @@ export default {
 
 .detail2 {
   min-height: 80vh;
-  background-image: url('http://localhost:8000/storage/images/home7.jpeg');
+  background-image: url('/storage/images/home7.jpeg');
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));

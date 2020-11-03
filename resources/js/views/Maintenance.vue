@@ -113,7 +113,7 @@ export default {
 
 .hero2 {
   min-height: 100vh;
-  background-image: url('http://localhost:8000/storage/images/property.webp');
+  background-image: url('/storage/images/property.webp');
 
   
   align-items: center;
@@ -124,7 +124,7 @@ export default {
 
 .detail3 {
   min-height: 80vh;
-  background-image: url('http://localhost:8000/storage/images/property2.jpeg');
+  background-image: url('/storage/images/property2.jpeg');
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));

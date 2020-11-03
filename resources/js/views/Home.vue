@@ -370,7 +370,7 @@ $bp-medium: 50em; // 800px
 
 .welcome {
   min-height: 100vh;
-  background-image: url('http://localhost:8000/storage/images/home1.jpeg');
+  background-image: url('/storage/images/home1.jpeg');
 
   display: grid;
   grid-template-rows: 90vh max-content;
@@ -484,7 +484,7 @@ $bp-medium: 50em; // 800px
 
   padding: 30px;
   min-height: 100vh;
-  background-image: linear-gradient(to right, rgba(0,0,0, .8),  rgba(0,0,0, .8)), url('http://localhost:8000/storage/images/Services 1.jpg');
+  background-image: linear-gradient(to right, rgba(0,0,0, .8),  rgba(0,0,0, .8)), url('/storage/images/Services 1.jpg');
   position: relative;
   opacity: 0.7;
   background-position: center;
